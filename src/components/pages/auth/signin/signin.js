@@ -1,6 +1,53 @@
 import React from "react";
 
+import { useState } from "react";
+import { UserContext } from "../../../../App";
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useContext } from "react";
+
+
+
 const Signin = () => {
+
+    const { setUser } = useContext(UserContext);
+    const provider = new GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const auth = getAuth();
+
+    function SigninWithEmail() {
+        console.log("Login Function");
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            setUser(user.email);
+            window.location.href = "/admin";
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+          });
+      }
+      function SinginWithGooglepopup() {
+        console.log("Sign up with Google");
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+            window.location.href = "/";
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            console.log("error", errorMessage);
+          });
+      }
+
     return (
         <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
             <div className="container mx-auto">
@@ -13,26 +60,23 @@ const Signin = () => {
                                 </h1>
                             </div>
                             <form>
-                                <InputBox type="email" name="email" placeholder="Email" />
-                                <InputBox
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                />
+                                <InputBox type="email" name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                                <InputBox type="password" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                                 <div className="mb-10">
                                     <input
                                         type="submit"
                                         value="Sign In"
                                         className="w-full cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
-                                    />
+                                        onClick={SigninWithEmail}
+                                   />
                                 </div>
                             </form>
 
                             <ul className="-mx-2 mb-12 flex justify-between">
 
                                 <li className="w-full px-2">
-                                    <a
-                                        href="/#"
+                                    <a onClick={SinginWithGooglepopup}
+                                       
                                         className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
                                     >
                                         <svg

@@ -1,7 +1,44 @@
 import React from "react";
 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import { useState } from 'react';
 
 const Signup = () => {
+
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    function SignUpWithEmail() {
+        console.log("Login Function")
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                window.location.href = '/';
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
+    }
+    function SingupWithGooglepopup() {
+        console.log("Sign up with Google");
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+            window.location.href = "/";
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            console.log("error", errorMessage);
+          });
+      }
     return (
         <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
             <div className="container mx-auto">
@@ -14,17 +51,24 @@ const Signup = () => {
                                 </h1>
                             </div>
                             <form>
-                                <InputBox type="email" name="email" placeholder="Email" />
+                                <InputBox 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email" 
+                                onChange={e=>setEmail(e.target.value)}
+                                />
                                 <InputBox
                                     type="password"
                                     name="password"
                                     placeholder="Password"
+                                    onChange={e=> setPassword(e.target.value)}
                                 />
                                 <div className="mb-10">
                                     <input
                                         type="submit"
                                         value="Sign Up"
                                         className="w-full cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
+                                        onClick={SignUpWithEmail}
                                     />
                                 </div>
                             </form>
@@ -32,9 +76,9 @@ const Signup = () => {
                             <ul className="-mx-2 mb-12 flex justify-between">
 
                                 <li className="w-full px-2">
-                                    <a
-                                        href="/#"
+                                    <a onClick={SingupWithGooglepopup}
                                         className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
+
                                     >
                                         <svg
                                             width="18"
