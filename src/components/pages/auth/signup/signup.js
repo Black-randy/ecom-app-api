@@ -10,7 +10,7 @@ const Signup = () => {
                         <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
                             <div className="mb-5 text-center md:mb-8">
                                 <h1 className="mb-5 text-2xl font-bold !leading-[1.208] text-dark dark:text-white sm:text-[42px] lg:text-[40px] xl:text-5xl">
-                                SIGN UP
+                                    SIGN UP
                                 </h1>
                             </div>
                             <form>

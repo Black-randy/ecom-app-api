@@ -3,7 +3,7 @@ import React from "react";
 const Error = () => {
   return (
     <>
-      <section className="relative z-10 bg-primary py-[120px]">
+      <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
         <div className="container mx-auto">
           <div className="-mx-4 flex">
             <div className="w-full px-4">
@@ -18,7 +18,7 @@ const Error = () => {
                   The page you are looking for it maybe deleted
                 </p>
                 <a
-                  href="javascript:void(0)"
+                  href="/home"
                   className="inline-block rounded-lg border border-white px-8 py-3 text-center text-base font-semibold text-white transition hover:bg-white hover:text-primary"
                 >
                   Go To Home

@@ -1,6 +1,4 @@
 import React from "react";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-
 
 const Signin = () => {
     return (
@@ -49,6 +47,7 @@ const Signin = () => {
                                                 fill="white"
                                             />
                                         </svg>
+                                        
                                     </a>
                                 </li>
 
@@ -60,7 +59,7 @@ const Signin = () => {
                                 Forget Password?
                             </a>
                             <p className="text-base text-body-color dark:text-dark-6">
-                                <span className="pr-0.5">Not a member yet?</span>
+                                <span className="pr-0.5">Not a member yet? </span>
                                 <a
                                     href="/signup"
                                     className="text-primary hover:underline"
