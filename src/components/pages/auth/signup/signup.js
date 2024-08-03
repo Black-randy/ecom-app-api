@@ -1,44 +1,42 @@
-import React from "react";
-
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
-import { useState } from 'react';
+import React, { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Signup = () => {
-
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
-    function SignUpWithEmail() {
-        console.log("Login Function")
+    const SignUpWithEmail = (e) => {
+        e.preventDefault();
+        console.log("Login Function");
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
+                console.log(user);
                 window.location.href = '/';
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                console.log(errorCode, errorMessage);
             });
-    }
-    function SingupWithGooglepopup() {
+    };
+
+    const SignupWithGooglePopup = () => {
         console.log("Sign up with Google");
         signInWithPopup(auth, provider)
-          .then((result) => {
-            const user = result.user;
-            console.log(user);
-            window.location.href = "/";
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            console.log("error", errorMessage);
-          });
-      }
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                window.location.href = "/";
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log("error", errorMessage);
+            });
+    };
+
     return (
         <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
             <div className="container mx-auto">
@@ -52,16 +50,16 @@ const Signup = () => {
                             </div>
                             <form>
                                 <InputBox 
-                                type="email" 
-                                name="email" 
-                                placeholder="Email" 
-                                onChange={e=>setEmail(e.target.value)}
+                                    type="email" 
+                                    name="email" 
+                                    placeholder="Email" 
+                                    onChange={e => setEmail(e.target.value)}
                                 />
                                 <InputBox
                                     type="password"
                                     name="password"
                                     placeholder="Password"
-                                    onChange={e=> setPassword(e.target.value)}
+                                    onChange={e => setPassword(e.target.value)}
                                 />
                                 <div className="mb-10">
                                     <input
@@ -74,11 +72,9 @@ const Signup = () => {
                             </form>
 
                             <ul className="-mx-2 mb-12 flex justify-between">
-
                                 <li className="w-full px-2">
-                                    <a onClick={SingupWithGooglepopup}
+                                    <a onClick={SignupWithGooglePopup}
                                         className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
-
                                     >
                                         <svg
                                             width="18"
@@ -94,7 +90,6 @@ const Signup = () => {
                                         </svg>
                                     </a>
                                 </li>
-
                             </ul>
                             <a
                                 href="/recoverpass"
@@ -340,7 +335,7 @@ const Signup = () => {
 
 export default Signup;
 
-const InputBox = ({ type, placeholder, name }) => {
+const InputBox = ({ type, placeholder, name, onChange }) => {
     return (
         <div className="mb-6">
             <input
@@ -348,6 +343,7 @@ const InputBox = ({ type, placeholder, name }) => {
                 placeholder={placeholder}
                 name={name}
                 className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                onChange={onChange}
             />
         </div>
     );
