@@ -1,52 +1,46 @@
-import React from "react";
-
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../../../../App";
-
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useContext } from "react";
-
-
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Signin = () => {
-
     const { setUser } = useContext(UserContext);
     const provider = new GoogleAuthProvider();
     provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const auth = getAuth();
 
-    function SigninWithEmail() {
+    const SigninWithEmail = (e) => {
+        e.preventDefault();
         console.log("Login Function");
         signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log(user);
-            setUser(user.email);
-            window.location.href = "/admin";
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-          });
-      }
-      function SinginWithGooglepopup() {
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log(user);
+                setUser(user.email);
+                window.location.href = "/admin";
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+    };
+
+    const SigninWithGooglePopup = () => {
         console.log("Sign up with Google");
         signInWithPopup(auth, provider)
-          .then((result) => {
-            const user = result.user;
-            console.log(user);
-            window.location.href = "/";
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            console.log("error", errorMessage);
-          });
-      }
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                window.location.href = "/";
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log("error", errorMessage);
+            });
+    };
 
     return (
         <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
@@ -59,25 +53,24 @@ const Signin = () => {
                                     SIGN IN
                                 </h1>
                             </div>
-                            <form>
+                            <form onSubmit={SigninWithEmail}>
                                 <InputBox type="email" name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                                 <InputBox type="password" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                                 <div className="mb-10">
-                                    <input
+                                    <button
                                         type="submit"
-                                        value="Sign In"
                                         className="w-full cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
-                                        onClick={SigninWithEmail}
-                                   />
+                                    >
+                                        Sign In
+                                    </button>
                                 </div>
                             </form>
 
                             <ul className="-mx-2 mb-12 flex justify-between">
-
                                 <li className="w-full px-2">
-                                    <a onClick={SinginWithGooglepopup}
-                                       
-                                        className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
+                                    <button
+                                        onClick={SigninWithGooglePopup}
+                                        className="w-full flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
                                     >
                                         <svg
                                             width="18"
@@ -91,10 +84,8 @@ const Signin = () => {
                                                 fill="white"
                                             />
                                         </svg>
-                                        
-                                    </a>
+                                    </button>
                                 </li>
-
                             </ul>
                             <a
                                 href="/recoverpass"
@@ -340,13 +331,14 @@ const Signin = () => {
 
 export default Signin;
 
-const InputBox = ({ type, placeholder, name }) => {
+const InputBox = ({ type, placeholder, name, onChange }) => {
     return (
         <div className="mb-6">
             <input
                 type={type}
                 placeholder={placeholder}
                 name={name}
+                onChange={onChange}
                 className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
             />
         </div>
