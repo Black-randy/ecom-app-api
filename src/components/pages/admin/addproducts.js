@@ -108,7 +108,7 @@ function AddProduct() {
               onClick={handleAddProduct}
               className="w-full px-6 py-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-lg"
             >
-              Add Product
+              Add Product #
             </button>
           </div>
         </form>
