@@ -19,14 +19,12 @@ const Navbar = () => {
       .then(() => {
         setUser("Guest");
         setUid("");
-        // Sign-out successful.
       })
       .catch((error) => {
-        // An error happened.
+        console.error(error);
       });
   }
 
-  // Close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
@@ -42,7 +40,6 @@ const Navbar = () => {
     return () => document.removeEventListener("click", clickHandler);
   });
 
-  // Close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
       if (!dropdownOpen || keyCode !== 27) return;
@@ -76,7 +73,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setOpen(!open)}
                   id="navbarToggler"
-                  className={` ${
+                  className={`${
                     open && "navbarTogglerActive"
                   } absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden`}
                 >
@@ -120,12 +117,38 @@ const Navbar = () => {
                   <>
                     <Button
                       onClick={() => navigate("/cart")}
-                      style={{ marginInline: "25px" }}
+                      style={{ marginInline: "25px", position: "relative" }}
                       disabled={count === 0}
                     >
-                      <i className="bi bi-cart" style={{ marginInline: "25px" }}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-6"
+                        style={{ marginInline: "10px" }}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                        />
+                      </svg>
+                      <span
+                        style={{
+                          position: "absolute",
+                          top: "-10px",
+                          right: "-10px",
+                          backgroundColor: "red",
+                          color: "white",
+                          borderRadius: "50%",
+                          padding: "2px 6px",
+                          fontSize: "12px",
+                        }}
+                      >
                         {count}
-                      </i>
+                      </span>
                     </Button>
                     <div className="relative inline-block">
                       <button
@@ -144,12 +167,28 @@ const Navbar = () => {
                         <span className="text-base font-medium text-dark dark:text-white">
                           {user.split("@")[0]}
                         </span>
+                        <span className="pl-[10px] text-dark duration-100 dark:text-white">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`fill-current ${
+                              dropdownOpen ? "-scale-y-100" : ""
+                            }`}
+                          >
+                            <path d="M10 14.25C9.8125 14.25 9.65625 14.1875 9.5 14.0625L2.3125 7C2.03125 6.71875 2.03125 6.28125 2.3125 6C2.59375 5.71875 3.03125 5.71875 3.3125 6L10 12.5312L16.6875 5.9375C16.9688 5.65625 17.4062 5.65625 17.6875 5.9375C17.9688 6.21875 17.9688 6.65625 17.6875 6.9375L10.5 14C10.3437 14.1562 10.1875 14.25 10 14.25Z" />
+                          </svg>
+                        </span>
                       </button>
                       <div
                         ref={dropdown}
                         onFocus={() => setDropdownOpen(true)}
                         onBlur={() => setDropdownOpen(false)}
-                        className={`absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-white p-2 shadow-card dark:bg-dark-2 dark:shadow-box-dark ${dropdownOpen ? "block" : "hidden"}`}
+                        className={`absolute right-0 top-full z-40 w-[200px] space-y-1 rounded bg-white p-2 shadow-card dark:bg-dark-2 dark:shadow-box-dark ${
+                          dropdownOpen ? "block" : "hidden"
+                        }`}
                       >
                         <a
                           href="#0"
@@ -158,10 +197,10 @@ const Navbar = () => {
                           Profile
                         </a>
                         <a
-                          href="#0"
+                          href="adminpage"
                           className="block w-full rounded px-3 py-2 text-left text-sm text-body-color hover:bg-gray-2 dark:text-dark-6 dark:hover:bg-dark-3"
                         >
-                          Settings
+                          Admin Panle
                         </a>
                         <button
                           onClick={LogOut}

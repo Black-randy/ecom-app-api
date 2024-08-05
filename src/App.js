@@ -38,11 +38,16 @@ function App() {
 
   return (
     <div id="root">
-    <UserContext.Provider
-      value={{ uid, user, setUser, setUid, count, setCount }}
-    >
-      <RoutesComponent/>
-    </UserContext.Provider>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      </head>
+      <UserContext.Provider
+        value={{ uid, user, setUser, setUid, count, setCount }}
+      >
+        <RoutesComponent />
+      </UserContext.Provider>
     </div>
   );
 }

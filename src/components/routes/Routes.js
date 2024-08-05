@@ -7,8 +7,12 @@ import Contact from "../pages/contact/contact.js";
 import Footer from "../pages/footer/footer.js"
 import Portfolio from "../pages/portfolio/portfolio.js"
 import Products from "../pages/products/products.js"
-
 import About from "../pages/about/about.js"
+
+import AdminPage from "../pages/admin/admin.js";
+import AddProduct from "../pages/admin/addproducts";
+import EditProduct from "../pages/admin/editproducts.js";
+
 import Error404 from "../pages/Error/404.js"
 
 function RoutesComponent() {
@@ -17,13 +21,17 @@ function RoutesComponent() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="AdminPage" element={<AdminPage />} />
+                <Route path="Add-Products" element={<AddProduct />} />
+                <Route path="Edit-Products" element={<EditProduct />} />
+
                 <Route path="home" element={<Home />} />
-                <Route path="Products" element={<Products />} />
-                <Route path="SignIn" element={<SignIn />} />
-                <Route path="SignUp" element={<SignUp />} />
-                <Route path="Contact" element={<Contact />} />
-                <Route path="Portfolio" element={<Portfolio />} />
-                <Route path="About" element={<About />} />
+                <Route path="products" element={<Products />} />
+                <Route path="signin" element={<SignIn />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="portfolio" element={<Portfolio />} />
+                <Route path="about" element={<About />} />
                 <Route path="*" element={<Error404 />} />
 
             </Routes>

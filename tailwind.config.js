@@ -13,4 +13,6 @@ module.exports = {
     require("tailgrids/plugin"),
     flowbite.plugin(),
   ],
-};
+};;
+
+
