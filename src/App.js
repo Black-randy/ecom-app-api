@@ -1,6 +1,7 @@
 import './App.css';
 
 import RoutesComponent from "./components/routes/Routes";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 import { useState, createContext, useEffect } from "react";
 
@@ -47,6 +48,7 @@ function App() {
         value={{ uid, user, setUser, setUid, count, setCount }}
       >
         <RoutesComponent />
+        <SpeedInsights/>
       </UserContext.Provider>
     </div>
   );
