@@ -8,7 +8,7 @@ import Footer from "../pages/footer/footer.js"
 import Portfolio from "../pages/portfolio/portfolio.js"
 import Products from "../pages/products/products.js"
 import About from "../pages/about/about.js"
-
+import Blog from "../pages/blog/blogs.js";
 import AdminPage from "../pages/admin/admin.js";
 import AddProduct from "../pages/admin/addproducts";
 import EditProduct from "../pages/admin/editproducts.js";
@@ -21,6 +21,7 @@ function RoutesComponent() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+
                 <Route path="AdminPage" element={<AdminPage />} />
                 <Route path="Add-Products" element={<AddProduct />} />
                 <Route path="Edit-Products" element={<EditProduct />} />
@@ -31,9 +32,11 @@ function RoutesComponent() {
                 <Route path="signup" element={<SignUp />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="portfolio" element={<Portfolio />} />
+                <Route path="blog" element={<Blog />} />
                 <Route path="about" element={<About />} />
-                <Route path="*" element={<Error404 />} />
 
+                <Route path="*" element={<Error404 />} />
+                
             </Routes>
             <Footer />
         </BrowserRouter>

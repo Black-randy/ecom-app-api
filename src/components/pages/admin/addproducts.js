@@ -48,7 +48,7 @@ function AddProduct() {
 
   return (
     <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[10px]">
-      <div className="relative mx-auto max-w-lg rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 shadow-lg">
+      <div className="relative mx-auto max-w-lg rounded-lg bg-white px-10 py-16 text-left dark:bg-dark-2 shadow-lg">
         <h2 className="text-2xl font-bold text-primary mb-8">Add New Product</h2>
         <form className="space-y-6">
           <div>
@@ -78,18 +78,6 @@ function AddProduct() {
             />
           </div>
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-dark-7">
-              Description
-            </label>
-            <textarea
-              id="description"
-              value={productDescription}
-              onChange={(e) => setProductDescription(e.target.value)}
-              placeholder="Enter product description"
-              className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-dark-2 dark:bg-dark-3 dark:text-white"
-            />
-          </div>
-          <div>
             <label htmlFor="url" className="block text-sm font-medium text-gray-700 dark:text-dark-7">
               Image URL
             </label>
@@ -102,19 +90,31 @@ function AddProduct() {
               className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-dark-2 dark:bg-dark-3 dark:text-white"
             />
           </div>
+          <div>
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-dark-7">
+              Description
+            </label>
+            <textarea
+              id="description"
+              value={productDescription}
+              onChange={(e) => setProductDescription(e.target.value)}
+              placeholder="Enter product description"
+              className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-dark-2 dark:bg-dark-3 dark:text-white"
+            />
+          </div>
+
           <div className="mt-8">
             <button
               type="button"
               onClick={handleAddProduct}
               className="w-full px-6 py-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-lg"
             >
-              Add Product #
+              Add Product
             </button>
           </div>
         </form>
-
-        
       </div>
+     
       {showToast.type && (
           <div className="absolute top-4 right-4">
             <Toast>

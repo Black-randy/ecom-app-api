@@ -3,38 +3,44 @@ import React from "react";
 const Error = () => {
   return (
     <>
-      <section className="bg-gray-1 py-20 dark:bg-dark lg:py-[120px]">
+      <section className="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] dark:bg-dark">
         <div className="container mx-auto">
-          <div className="-mx-4 flex">
+          <div className="flex flex-wrap -mx-4">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[400px] text-center">
-                <h2 className="mb-2 text-[50px] font-bold leading-none text-white sm:text-[80px] md:text-[100px]">
-                  404
-                </h2>
-                <h4 className="mb-3 text-[22px] font-semibold leading-tight text-white">
-                  Oops! That page can’t be found
-                </h4>
-                <p className="mb-8 text-lg text-white">
-                  The page you are looking for it maybe deleted
-                </p>
-                <a
-                  href="/home"
-                  className="inline-block rounded-lg border border-white px-8 py-3 text-center text-base font-semibold text-white transition hover:bg-white hover:text-primary"
-                >
-                  Go To Home
-                </a>
-              </div>
+
+
+
+             
+                <div className="container mx-auto">
+                  <div className="-mx-4 flex">
+                    <div className="w-full px-4">
+                      <div className="mx-auto max-w-[400px] text-center">
+                        <h2 className="mb-2 text-[50px] font-bold leading-none text-dark sm:text-[80px] dark:text-white md:text-[100px]">
+                          404
+                        </h2>
+                        <h4 className="mb-3 text-[22px] font-semibold leading-tight dark:text-white text-dark">
+                          Oops! That page can’t be found
+                        </h4>
+                        <p className="mb-8 text-lg  dark:text-white text-dark">
+                          The page you are looking for it maybe deleted
+                        </p>
+                        <a
+                          href="home"
+                          className='border-dark dark:border-dark-2 border rounded-md inline-flex items-center justify-center py-3 px-7 text-center text-base font-medium text-dark dark:text-white hover:bg-gray-4 dark:hover:bg-dark-3 disabled:bg-gray-3 disabled:border-gray-3 disabled:text-dark-5'  
+                          >
+                          Go To Home
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
             </div>
           </div>
-        </div>
-
-        <div className="absolute left-0 top-0 -z-10 flex h-full w-full items-center justify-between space-x-5 md:space-x-8 lg:space-x-14">
-          <div className="h-full w-1/3 bg-gradient-to-t from-[#FFFFFF14] to-[#C4C4C400]"></div>
-          <div className="flex h-full w-1/3">
-            <div className="h-full w-1/2 bg-gradient-to-b from-[#FFFFFF14] to-[#C4C4C400]"></div>
-            <div className="h-full w-1/2 bg-gradient-to-t from-[#FFFFFF14] to-[#C4C4C400]"></div>
-          </div>
-          <div className="h-full w-1/3 bg-gradient-to-b from-[#FFFFFF14] to-[#C4C4C400]"></div>
         </div>
       </section>
     </>
