@@ -19,7 +19,7 @@ const Signin = () => {
                 const user = userCredential.user;
                 console.log(user);
                 setUser(user.email);
-                window.location.href = "/admin";
+                window.location.href = "/AdminPage";
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -34,7 +34,7 @@ const Signin = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                window.location.href = "/";
+                window.location.href = "/AdminPage";
             })
             .catch((error) => {
                 const errorMessage = error.message;

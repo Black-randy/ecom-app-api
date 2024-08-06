@@ -14,7 +14,7 @@ const Signup = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                window.location.href = '/';
+                window.location.href = '/home';
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -29,7 +29,7 @@ const Signup = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                window.location.href = "/";
+                window.location.href = "/home";
             })
             .catch((error) => {
                 const errorMessage = error.message;
