@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider
+        }
+        from "firebase/auth";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -49,10 +55,10 @@ const Signup = () => {
                                 </h1>
                             </div>
                             <form>
-                                <InputBox 
-                                    type="email" 
-                                    name="email" 
-                                    placeholder="Email" 
+                                <InputBox
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
                                     onChange={e => setEmail(e.target.value)}
                                 />
                                 <InputBox
