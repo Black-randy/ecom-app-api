@@ -55,14 +55,14 @@ const Navbar = () => {
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
             <div className="w-60 max-w-full px-4">
-              <a href="/#" className="block w-full py-5">
+              <a href="home" className="block w-full py-5">
                 <img
-                  src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-primary.svg"
+                  src="https://raw.githubusercontent.com/Black-randy/ecom-app-api/main/src/Logos/willowtree_Black.png"
                   alt="logo"
                   className="dark:hidden"
                 />
                 <img
-                  src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
+                  src="https://raw.githubusercontent.com/Black-randy/ecom-app-api/main/src/Logos/willowtree_white.png"
                   alt="logo"
                   className="hidden dark:block"
                 />

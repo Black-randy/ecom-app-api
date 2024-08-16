@@ -14,8 +14,10 @@ const Service = () => {
                 What We Offer
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+              At Willow Tree (Pvt) Ltd., we provide a range of premium 
+              services to transform your spaces into beautiful, personalized 
+              environments. Our team of experts is dedicated to delivering 
+              the highest quality in interior design.
               </p>
             </div>
           </div>
@@ -23,8 +25,8 @@ const Service = () => {
 
         <div className="-mx-4 flex flex-wrap">
           <ServiceCard
-            title="Refreshing Design"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Interior Design Consultation"
+            details="We offer personalized consultations to help you bring your vision to life, whether you're designing a single room or an entire home."
             icon={
               <svg
                 width="36"
@@ -41,8 +43,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Based on Tailwind CSS"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Home Decor Sourcing"
+            details="We source the finest home decor items to, ensure that every detail contributes to your desired aesthetic."
             icon={
               <svg
                 width="36"
@@ -61,8 +63,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="100+ Components"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Space Planning"
+            details="Our space planning services ensure that every inch of your space is utilized , creating functional pleasing environments."
             icon={
               <svg
                 width="36"
@@ -91,8 +93,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Speed Optimized"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Project Management"
+            details="We oversee every aspect of your interior design project, ensuring timely delivery and top-quality results."
             icon={
               <svg
                 width="36"
@@ -113,8 +115,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Fully Customizable"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Custom Furniture Design"
+            details="Our expert designers craft bespoke furniture pieces that reflect your unique style and fit perfectly in your space."
             icon={
               <svg
                 width="36"
