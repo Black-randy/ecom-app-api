@@ -6,12 +6,21 @@
 
 # Application Source Code
 
-- **GitHub Repository:** [E-com](https://github.com/Black-randy/ecom-app-api.git)
+- **GitHub Repository:** [ecom-app-api](https://github.com/Black-randy/ecom-app-api.git) (front end)  
+- **Server Backend:** [ecom-app-api-backend](https://github.com/Black-randy/ecom-app-api-backend)
 
-To download the application, use the following Git command:
+To download the application, use the following Git commands:
+
+**Front End:**
 
 ```bash
 git clone https://github.com/Black-randy/ecom-app-api.git
+```
+
+**Back End:**
+
+```bash
+git clone https://github.com/Black-randy/ecom-app-api-backend.git
 ```
 
 ### Start Application
